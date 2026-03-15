@@ -12,16 +12,16 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle
-        # 폴더 안으로 이동해서 빌드하도록 수정했습니다.
         run: |
-          cd apocalypse_escape_fullpack
-          if [ -f "./gradlew" ]; then
-            chmod +x gradlew
-            ./gradlew build
-          else
-            echo "Gradle wrapper still not found in subdirectory"
+          # 프로젝트 내의 모든 gradlew 파일을 찾아서 실행합니다.
+          GRADLEW_PATH=$(find . -name gradlew | head -n 1)
+          if [ -z "$GRADLEW_PATH" ]; then
+            echo "Error: gradlew file not found anywhere!"
             exit 1
           fi
+          cd $(dirname $GRADLEW_PATH)
+          chmod +x gradlew
+          ./gradlew build
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
