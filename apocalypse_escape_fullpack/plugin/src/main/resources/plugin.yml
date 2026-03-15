@@ -1,0 +1,8 @@
+
+name: ApocalypseEscape
+version: 2.0
+main: com.apocalypse.escape.ApocalypseEscape
+api-version: 1.21
+commands:
+  escape:
+    description: Escape mode command

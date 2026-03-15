@@ -1,0 +1,17 @@
+
+difficulty: normal
+
+city:
+  size: 1000
+  buildings: 120
+  style: mixed_korean_ruins
+
+zombies:
+  max: 200
+  types: 15
+
+systems:
+  infection: true
+  radiation: true
+  bunkers: true
+  graveyards: true
