@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT' // 버전에 맞게 수정 가능
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['plugin/src/main/java']
+        }
+        resources {
+            srcDirs = ['plugin/src/main/resources']
+        }
+    }
+}
+
+jar {
+    archiveFileName = 'plugin.jar'
+}
