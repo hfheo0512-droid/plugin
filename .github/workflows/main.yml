@@ -12,12 +12,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle
+        # 폴더 안으로 이동해서 빌드하도록 수정했습니다.
         run: |
+          cd apocalypse_escape_fullpack
           if [ -f "./gradlew" ]; then
             chmod +x gradlew
             ./gradlew build
           else
-            echo "Gradle wrapper not found"
+            echo "Gradle wrapper still not found in subdirectory"
             exit 1
           fi
       - name: Upload Artifact
