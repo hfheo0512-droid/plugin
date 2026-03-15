@@ -11,17 +11,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      
       - name: Build with Gradle
         run: |
-          # 프로젝트 내의 모든 gradlew 파일을 찾아서 실행합니다.
-          GRADLEW_PATH=$(find . -name gradlew | head -n 1)
-          if [ -z "$GRADLEW_PATH" ]; then
-            echo "Error: gradlew file not found anywhere!"
-            exit 1
-          fi
-          cd $(dirname $GRADLEW_PATH)
+          cd apocalypse_escape_fullpack
+          # 실행 파일(gradlew)이 없으면 새로 생성합니다.
+          gradle wrapper
           chmod +x gradlew
           ./gradlew build
+          
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
